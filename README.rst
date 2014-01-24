@@ -16,7 +16,7 @@ Instalación
 1. ``sudo apt-get install python-setuptools``
 2. ``sudo easy_install sphinx``
 3. ``sudo easy_install sphinxcontrib-phpdomain``
-5. ``cd Kumbiaphp-Doc``
-6. ``make html``
+4. ``cd Kumbiaphp-Doc``
+5. ``make html``
 
 Una vez se ha compilado se creará una carpeta llamada ``build`` que contiene los archivos html
