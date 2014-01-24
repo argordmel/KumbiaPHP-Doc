@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+	    
+            <title>Arquitectura MVC (Model - View - Controller) &mdash; KumbiaPHP Framework 1.0-dev documentation</title>
+
+	    <link rel="stylesheet" href="../_static/asset/css/common.css" type="text/css" />
+	    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic" media="all">
+                <script type="text/javascript">
+                  var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT:    '../',
+                    VERSION:     '1.0-dev',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '.html',
+                    HAS_SOURCE:  false
+                  };
+                </script>
+                <script type="text/javascript" src="../_static/jquery.js"></script>
+                <script type="text/javascript" src="../_static/underscore.js"></script>
+                <script type="text/javascript" src="../_static/doctools.js"></script>
+	    <link rel="top" title="KumbiaPHP Framework 1.0-dev documentation" href="../index.html" /> 
+	</head>
+	<body>
+        
+            <nav>
+                <div class="row">
+                    <a href="http://kumbiaphp.com/" class="logo span3" title="KumbiaPHP Framework PHP MVC"><img src="../_static/asset/img/KumbiaPHP-logo.png" alt="KumbiaPHP Framework" width="259" height="30"></a>                
+                    <p class="user-guide">1.0-dev Guía de Usuario</p>                
+                </div>
+            </nav>           
+
+            <header id="header">
+                <div class="row" style="max-width: 100%">
+                    <div class="span6 pull-right"><form class="search form" action="../search.html" method="get">
+    <input type="text" name="q" id="q" value="" />
+    <input type="submit" value="BUSCAR" class="btn" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+</form>                        
+                    </div>
+                    <div class="span6">
+                        <ul class="breadcrumb">
+                            <li><a href="../index.html">Inicio - Guía de Usuario</a>&nbsp;&nbsp; &rsaquo;</li>
+                            <li><strong>Arquitectura MVC (Model - View - Controller)</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <div class="row" id="content">
+  <div class="section" id="arquitectura-mvc-model-view-controller">
+<h1>Arquitectura MVC (Model - View - Controller)<a class="headerlink" href="#arquitectura-mvc-model-view-controller" title="Permalink to this headline">¶</a></h1>
+<p>En 1979, Trygve Reenskaug desarrolló una arquitectura para desarrollar aplicaciones interactivas.
+En este diseño existían tres partes: modelos, vistas y controladores. El modelo MVC permite hacer la
+separación de las capas de interfaz, modelo y lógica de control de ésta. La programación por capas,
+es un estilo de programación en la que el objetivo primordial es la separación de la lógica de negocios
+de la lógica de diseño, un ejemplo básico de esto es separar la capa de datos de la capa de presentación al
+usuario.</p>
+<div class="section" id="que-es-un-controlador">
+<h2>Qué es un Controlador<a class="headerlink" href="#que-es-un-controlador" title="Permalink to this headline">¶</a></h2>
+<p>El Controlador es el objeto que proporciona significado a las órdenes del usuario, actuando sobre los
+datos representados por el Modelo. Cuando se realiza algún cambio, entra en acción, bien sea por
+cambios en la información del Modelo o por alteraciones de la Vista.</p>
+</div>
+<div class="section" id="que-es-un-modelo">
+<h2>Qué es un Modelo<a class="headerlink" href="#que-es-un-modelo" title="Permalink to this headline">¶</a></h2>
+<p>Es la lógica de negocio de un aplicativo. El Modelo no tiene conocimiento específico de los
+Controladores o de las Vistas, ni siquiera contiene referencias a ellos. Es el propio sistema el que
+tiene encomendada la responsabilidad de mantener enlaces entre el Modelo y las Vistas.</p>
+</div>
+<div class="section" id="que-es-una-vista">
+<h2>Qué es una Vista<a class="headerlink" href="#que-es-una-vista" title="Permalink to this headline">¶</a></h2>
+<p>La Vista es el objeto que maneja la presentación visual de los datos representados por el Modelo
+y que son mostrados al usuario. Una vista puede ser un archivo html, xml, pdf, csv, odt, doc, xls, etc.</p>
+</div>
+<div class="section" id="resumiendo-un-poco">
+<h2>Resumiendo un poco<a class="headerlink" href="#resumiendo-un-poco" title="Permalink to this headline">¶</a></h2>
+<p>En una aplicación web la vista es la página HTML y/o todo lo que el usuario pueda ver en la pantalla.
+El controlador es el código que provee de datos dinámicos a la página y da respuestas al usuario.
+El modelo es el Sistema de Gestión de Base de Datos y/o la Lógica de negocio.</p>
+</div>
+<div class="section" id="analizando-un-ejemplo">
+<h2>Analizando un ejemplo<a class="headerlink" href="#analizando-un-ejemplo" title="Permalink to this headline">¶</a></h2>
+<p>Todos hemos visto un tablero de ajedrez, ahora analicemos un poco ese juego.</p>
+<p>El tablero y las fichas son la vista (lo que el jugador puede ver). Cada ficha cumple cierta regla
+y su movimiento depende de ella, esto lo defino como el modelo. El controlador es el que se encarga
+de mover cada ficha y colocarla en un cuadro del tablero dependiendo de la estrategia del juego. Es un
+ejemplo sencillo pero podemos comprender mejor el funcionamento de esta arquitectura.</p>
+</div>
+<div class="section" id="por-que-kumbiaphp-aplica-este-patron">
+<h2>Por qué KumbiaPHP aplica este patrón?<a class="headerlink" href="#por-que-kumbiaphp-aplica-este-patron" title="Permalink to this headline">¶</a></h2>
+<p>El objetivo de este patrón es el realizar y mantener la separación entre la lógica de nuestra
+aplicación, los datos y la presentación. Esta separación tiene algunas ventajas importantes, como
+poder identificar más fácilmente en qué capa se está produciendo un problema con sólo conocer su naturaleza.
+Podemos crear varias presentaciones sin necesidad de escribir varias veces la misma lógica de aplicación. Cada
+parte funciona independiente y cualquier cambio centraliza el efecto sobre las demás, así que podemos
+estar seguros que una modificación en un componente realizará bien las tareas en cualquier parte de la aplicación.</p>
+</div>
+</div>
+
+
+            </div>			
+            <footer>
+                <div class="row">
+                    <div class="span6">
+                        <p><a href="#header" title="Regresar a arriba">Regresar a arriba</a></p>
+                        <p><a href="http://kumbiaphp.com/">KumbiaPHP Framework</a> &ndash; Copyright &copy; 2014 KumbiaPHP Framework</p>
+                    </div>
+                    <div id="social" class="span6">
+                        <p>¡Compártelo!</p>
+                        <a class="social facebook" rel="nofollow" href="https://www.facebook.com/share.php?u=http://proto.kumbiaphp.com/&t=KumbiaPHP web y app PHP Framework en español - KumbiaPHP" title="Facebook" target="_blank"></a>
+                        <a class="social twitter" rel="nofollow" href="https://twitter.com/intent/tweet?text=KumbiaPHP web y app PHP Framework en español - KumbiaPHP&url=http://proto.kumbiaphp.com/&via=KumbiaPHP" title="Twitter" target="_blank"></a>
+                        <a class="social google" rel="nofollow" href="https://plusone.google.com/_/+1/confirm?hl=es&url=http://proto.kumbiaphp.com/" title="Google +1" target="_blank"></a>
+                    </div>
+                </div>
+            </footer>
+	</body>
+</html>

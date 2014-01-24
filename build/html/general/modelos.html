@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+	    
+            <title>Los Modelos &mdash; KumbiaPHP Framework 1.0-dev documentation</title>
+
+	    <link rel="stylesheet" href="../_static/asset/css/common.css" type="text/css" />
+	    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic" media="all">
+                <script type="text/javascript">
+                  var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT:    '../',
+                    VERSION:     '1.0-dev',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '.html',
+                    HAS_SOURCE:  false
+                  };
+                </script>
+                <script type="text/javascript" src="../_static/jquery.js"></script>
+                <script type="text/javascript" src="../_static/underscore.js"></script>
+                <script type="text/javascript" src="../_static/doctools.js"></script>
+	    <link rel="top" title="KumbiaPHP Framework 1.0-dev documentation" href="../index.html" /> 
+	</head>
+	<body>
+        
+            <nav>
+                <div class="row">
+                    <a href="http://kumbiaphp.com/" class="logo span3" title="KumbiaPHP Framework PHP MVC"><img src="../_static/asset/img/KumbiaPHP-logo.png" alt="KumbiaPHP Framework" width="259" height="30"></a>                
+                    <p class="user-guide">1.0-dev Guía de Usuario</p>                
+                </div>
+            </nav>           
+
+            <header id="header">
+                <div class="row" style="max-width: 100%">
+                    <div class="span6 pull-right"><form class="search form" action="../search.html" method="get">
+    <input type="text" name="q" id="q" value="" />
+    <input type="submit" value="BUSCAR" class="btn" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+</form>                        
+                    </div>
+                    <div class="span6">
+                        <ul class="breadcrumb">
+                            <li><a href="../index.html">Inicio - Guía de Usuario</a>&nbsp;&nbsp; &rsaquo;</li>
+                            <li><strong>Los Modelos</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <div class="row" id="content">
+  <div class="section" id="los-modelos">
+<h1>Los Modelos<a class="headerlink" href="#los-modelos" title="Permalink to this headline">¶</a></h1>
+<p>Los modelos son la lógica de negocio y todo lo que tiene que ver con el acceso a la base de datos.
+Los modelos son ubicados dentro de la carpeta <tt class="docutils literal"><span class="pre">models</span></tt> de nuestra aplicación.</p>
+<div class="section" id="convenciones-en-los-modelos">
+<h2>Convenciones en los modelos<a class="headerlink" href="#convenciones-en-los-modelos" title="Permalink to this headline">¶</a></h2>
+<p>Como convención los archivos se deben llamar igual que el nombre de la tabla; ejemplo: <tt class="docutils literal"><span class="pre">cliente.php</span></tt>,
+<tt class="docutils literal"><span class="pre">tipo_cliente.php</span></tt>.  De igual manera en la base de datos las llaves primarias se deben llamar <tt class="docutils literal"><span class="pre">id</span></tt> y
+deben ser <tt class="docutils literal"><span class="pre">AUTOINCREMENT</span></tt> o <tt class="docutils literal"><span class="pre">SERIAL</span></tt>.</p>
+<p>Los campos terminados en <tt class="docutils literal"><span class="pre">*_id</span></tt> se utilizan para relaciones foráneas a otras tablas. Ejemplo
+<tt class="docutils literal"><span class="pre">libro_id</span></tt> indica que posee una relación con la tabla <tt class="docutils literal"><span class="pre">libro</span></tt>.</p>
+<p>Si se desea almacenar la fecha de registro y modificación se pueden crear los campos <tt class="docutils literal"><span class="pre">*_at</span></tt> para el
+registro y <tt class="docutils literal"><span class="pre">*_in</span></tt> para la modificación. Ejemplo: registrado_at, modificado_in. Adicionalmente deben
+ser typo <tt class="docutils literal"><span class="pre">DATETIME</span></tt>, el cual se carga el valor automáticamente.</p>
+</div>
+<div class="section" id="como-usar-los-modelos">
+<h2>Como usar los Modelos<a class="headerlink" href="#como-usar-los-modelos" title="Permalink to this headline">¶</a></h2>
+<p>Los Modelos representan la lógica de la aplicación y son parte fundamental para el momento que se desarrolla
+una aplicación, un buen uso de estos nos proporciona un gran poder al momento que se necesita escalar,
+mantener y reusar código en una aplicación. Por lo general un mal uso de los modelos es solo dejar el
+archivo con la declaración de la clase y toda la lógica se genera en el controlador. Esta práctica trae
+como consecuencia que en primer lugar el controlador sea dificilmente entendible por alguien que intente
+agregar y/o modificar algo en esa funcionalidad, en segundo lugar lo poco que puedes rehusar el código en
+otros controladores y lo que hace es repetirse el código que hace lo mismo en otro controlador. Partiendo
+de este principio los controladores NO deberían contener ningún tipo de lógica solo se encargan de atender
+las peticiones del usuarios y solicitar dicha información a los modelos, con esto garantizamos un buen uso
+del MVC.</p>
+</div>
+<div class="section" id="definiendo-un-modelo">
+<h2>Definiendo un Modelo<a class="headerlink" href="#definiendo-un-modelo" title="Permalink to this headline">¶</a></h2>
+<p>La clase de cada modelo se debe llamar de la siguiente manera:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">TipoCliente</span> <span class="k">extends</span> <span class="nx">ActiveRecord</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="invocando-un-modelo-en-nuestros-controladores">
+<h2>Invocando un modelo en nuestros controladores<a class="headerlink" href="#invocando-un-modelo-en-nuestros-controladores" title="Permalink to this headline">¶</a></h2>
+<p>En KumbiaPHP existen 2 formas de invocar nuestros modelos según nuestros casos requeridos</p>
+<ul>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">Load::models('nombre_modelo',</span> <span class="pre">'nombre_otro_modelo');</span></tt></dt>
+<dd><p class="first last">De esta manera incluimos el (los) archivo(s) correspondiente(s) al (los) modelo(s) indicados(s).  Esta
+metodología es útil si necesitamos utilizar el modelo en mas de una acción dentro de uno o varios
+controladores.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">Load::model('nombre_modelo');</span></tt></dt>
+<dd><p class="first last">De esta manera devuelve un objeto creado del modelo indicado.  Esta metodología es útil cuando solo
+hacemos uso de un modelo en un solo método o acción dentro de un controlador.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Veamos el siguiente ejemplo:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Cargamos los modelos sin la extensión .php para usarlo en cualquier método</span>
+<span class="nx">Load</span><span class="o">::</span><span class="na">models</span><span class="p">(</span><span class="s1">&#39;cliente&#39;</span><span class="p">,</span> <span class="s1">&#39;tipo_cliente&#39;</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">ClienteController</span> <span class="k">extends</span> <span class="nx">AppController</span> <span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Método para ver la información del cliente</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">ver</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nv">$cliente</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cliente</span><span class="p">();</span>
+        <span class="nv">$cliente</span> <span class="o">=</span> <span class="nv">$clientes</span><span class="o">-&gt;</span><span class="na">find_first</span><span class="p">((</span><span class="nx">int</span><span class="p">)</span><span class="nv">$id</span><span class="p">);</span>
+
+        <span class="c1">//Cargo el modelo compra sólo para usarlo en este método</span>
+        <span class="nv">$compras</span> <span class="o">=</span> <span class="nx">Load</span><span class="o">::</span><span class="na">model</span><span class="p">(</span><span class="s1">&#39;compra&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s2">&quot;cliente_id = </span><span class="si">$cliente-&gt;id</span><span class="s2">&quot;</span><span class="p">);</span>
+
+        <span class="c1">//Se almacenan lo resultados en variables públicas para utilizarlas en la vista</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cliente</span> <span class="o">=</span> <span class="nv">$cliente</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">compras</span> <span class="o">=</span> <span class="nv">$compras</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+            </div>			
+            <footer>
+                <div class="row">
+                    <div class="span6">
+                        <p><a href="#header" title="Regresar a arriba">Regresar a arriba</a></p>
+                        <p><a href="http://kumbiaphp.com/">KumbiaPHP Framework</a> &ndash; Copyright &copy; 2014 KumbiaPHP Framework</p>
+                    </div>
+                    <div id="social" class="span6">
+                        <p>¡Compártelo!</p>
+                        <a class="social facebook" rel="nofollow" href="https://www.facebook.com/share.php?u=http://proto.kumbiaphp.com/&t=KumbiaPHP web y app PHP Framework en español - KumbiaPHP" title="Facebook" target="_blank"></a>
+                        <a class="social twitter" rel="nofollow" href="https://twitter.com/intent/tweet?text=KumbiaPHP web y app PHP Framework en español - KumbiaPHP&url=http://proto.kumbiaphp.com/&via=KumbiaPHP" title="Twitter" target="_blank"></a>
+                        <a class="social google" rel="nofollow" href="https://plusone.google.com/_/+1/confirm?hl=es&url=http://proto.kumbiaphp.com/" title="Google +1" target="_blank"></a>
+                    </div>
+                </div>
+            </footer>
+	</body>
+</html>

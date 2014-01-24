@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+	    
+            <title>Redireccionamiento &mdash; KumbiaPHP Framework 1.0-dev documentation</title>
+
+	    <link rel="stylesheet" href="../_static/asset/css/common.css" type="text/css" />
+	    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic" media="all">
+                <script type="text/javascript">
+                  var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT:    '../',
+                    VERSION:     '1.0-dev',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '.html',
+                    HAS_SOURCE:  false
+                  };
+                </script>
+                <script type="text/javascript" src="../_static/jquery.js"></script>
+                <script type="text/javascript" src="../_static/underscore.js"></script>
+                <script type="text/javascript" src="../_static/doctools.js"></script>
+	    <link rel="top" title="KumbiaPHP Framework 1.0-dev documentation" href="../index.html" /> 
+	</head>
+	<body>
+        
+            <nav>
+                <div class="row">
+                    <a href="http://kumbiaphp.com/" class="logo span3" title="KumbiaPHP Framework PHP MVC"><img src="../_static/asset/img/KumbiaPHP-logo.png" alt="KumbiaPHP Framework" width="259" height="30"></a>                
+                    <p class="user-guide">1.0-dev Guía de Usuario</p>                
+                </div>
+            </nav>           
+
+            <header id="header">
+                <div class="row" style="max-width: 100%">
+                    <div class="span6 pull-right"><form class="search form" action="../search.html" method="get">
+    <input type="text" name="q" id="q" value="" />
+    <input type="submit" value="BUSCAR" class="btn" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+</form>                        
+                    </div>
+                    <div class="span6">
+                        <ul class="breadcrumb">
+                            <li><a href="../index.html">Inicio - Guía de Usuario</a>&nbsp;&nbsp; &rsaquo;</li>
+                            <li><strong>Redireccionamiento</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <div class="row" id="content">
+  <div class="section" id="redireccionamiento">
+<h1>Redireccionamiento<a class="headerlink" href="#redireccionamiento" title="Permalink to this headline">¶</a></h1>
+<p>En un método de nuestro controlador podemos enrutar hacia otro controlador y/o acción según sea nuestro
+caso; por ejemplo, si estamos verificando o validando una información y falla, podemos direccionar a
+una acción o un controlador.</p>
+<div class="section" id="redireccion-entre-controladores">
+<h2>Redirección entre controladores<a class="headerlink" href="#redireccion-entre-controladores" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nx">Redirect</span><span class="o">::</span><span class="na">to</span><span class="p">(</span><span class="s1">&#39;controlador/&#39;</span><span class="p">);</span>
+<span class="nx">Redirect</span><span class="o">::</span><span class="na">to</span><span class="p">(</span><span class="s1">&#39;controlador/action&#39;</span><span class="p">);</span>
+<span class="nx">Redirect</span><span class="o">::</span><span class="na">to</span><span class="p">(</span><span class="s1">&#39;controlador/action/parameters/&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>También podemos indicar el tiempo en segundos para redireccionar</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nx">Redirect</span><span class="o">::</span><span class="na">to</span><span class="p">(</span><span class="s1">&#39;controlador/&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="nx">Redirect</span><span class="o">::</span><span class="na">to</span><span class="p">(</span><span class="s1">&#39;controlador/action&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nx">Redirect</span><span class="o">::</span><span class="na">to</span><span class="p">(</span><span class="s1">&#39;controlador/action/parameters/&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="redireccion-entre-acciones-dentro-de-un-controlador">
+<h2>Redirección entre acciones dentro de un controlador<a class="headerlink" href="#redireccion-entre-acciones-dentro-de-un-controlador" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nx">Redirect</span><span class="o">::</span><span class="na">toAction</span><span class="p">(</span><span class="s1">&#39;action/&#39;</span><span class="p">);</span>
+<span class="nx">Redirect</span><span class="o">::</span><span class="na">toAction</span><span class="p">(</span><span class="s1">&#39;action/parameters/&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="redireccion-interna">
+<h2>Redirección interna<a class="headerlink" href="#redireccion-interna" title="Permalink to this headline">¶</a></h2>
+<p>Al utilizar este método KumbiaPHP lo que hace es ejecutar los parámetros indicados sin redireccionar la página.
+Este tipo de redirección es muy útil cuanto utilizas tus app con ajax.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nx">Redirect</span><span class="o">::</span><span class="na">route_to</span><span class="p">(</span><span class="s1">&#39;module: nombre_módulo&#39;</span><span class="p">,</span> <span class="s1">&#39;controller: controlador&#39;</span><span class="p">,</span> <span class="s1">&#39;action: acción_a_ejecutar&#39;</span><span class="p">,</span> <span class="s1">&#39;parameters: parámetros_a_enviar&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="obteniendo-informacion-de-la-ruta-actual">
+<h2>Obteniendo información de la ruta actual<a class="headerlink" href="#obteniendo-informacion-de-la-ruta-actual" title="Permalink to this headline">¶</a></h2>
+<p>Cuando haces un redireccionamiento, KumbiaPHP almacena las variables de la ruta actual para poder disponer de ellas en cualquier momento.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//Variables que puede recibir route, module, controller, action, parameters o routed</span>
+<span class="nx">Router</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;var&#39;</span><span class="p">);</span>
+
+<span class="nv">$route</span>                  <span class="o">=</span> <span class="nx">Router</span><span class="o">::</span><span class="na">get</span><span class="p">();</span> <span class="c1">//Devuelve un array() con la información almacenada</span>
+<span class="nv">$modulo_actual</span>          <span class="o">=</span> <span class="nx">Router</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;module&#39;</span><span class="p">);</span>
+<span class="nv">$controlador_actual</span>     <span class="o">=</span> <span class="nx">Router</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;controller&#39;</span><span class="p">);</span>
+<span class="nv">$accion_actual</span>          <span class="o">=</span> <span class="nx">Router</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">);</span>
+<span class="nv">$parametros_recibidos</span>   <span class="o">=</span> <span class="nx">Router</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;parameters&#39;</span><span class="p">);</span> <span class="c1">//Esta opción devuelve un array() con los parámetros</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+            </div>			
+            <footer>
+                <div class="row">
+                    <div class="span6">
+                        <p><a href="#header" title="Regresar a arriba">Regresar a arriba</a></p>
+                        <p><a href="http://kumbiaphp.com/">KumbiaPHP Framework</a> &ndash; Copyright &copy; 2014 KumbiaPHP Framework</p>
+                    </div>
+                    <div id="social" class="span6">
+                        <p>¡Compártelo!</p>
+                        <a class="social facebook" rel="nofollow" href="https://www.facebook.com/share.php?u=http://proto.kumbiaphp.com/&t=KumbiaPHP web y app PHP Framework en español - KumbiaPHP" title="Facebook" target="_blank"></a>
+                        <a class="social twitter" rel="nofollow" href="https://twitter.com/intent/tweet?text=KumbiaPHP web y app PHP Framework en español - KumbiaPHP&url=http://proto.kumbiaphp.com/&via=KumbiaPHP" title="Twitter" target="_blank"></a>
+                        <a class="social google" rel="nofollow" href="https://plusone.google.com/_/+1/confirm?hl=es&url=http://proto.kumbiaphp.com/" title="Google +1" target="_blank"></a>
+                    </div>
+                </div>
+            </footer>
+	</body>
+</html>
