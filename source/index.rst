@@ -13,10 +13,12 @@ Bienvenidos
 ***********
 
 - :doc:`general/bienvenidos`
+- :doc:`general/instalacion`
 
 ************
 Introducción
 ************
+
 - :doc:`general/mvc`
 
 ***************
