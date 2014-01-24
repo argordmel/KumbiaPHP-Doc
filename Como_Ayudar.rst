@@ -6,6 +6,24 @@ La guía del usuario de Kumbiaphp usa Sphinx para gestionar la documentación y
 salida a varios formatos. Las páginas están escritas en 
 `ReStructured Text <http://sphinx.pocoo.org/rest.html>`_ format.
 
+***************
+Creando un fork
+***************
+
+Desde Github puedes crear un fork a este proyecto, así tendrás tu propio repo.  Puedes editar tu repo
+y cargar el contenido que desees, una vez cargado haces commit, pull y push para subirlo a tu github.
+
+* Actualizando el repo principal: Desde github y en tu repo realiza un pull-request de tu repo hacia este.
+* Actualizando el tu repo: Desde github y tu repo realiza un pull-request desde el principal a tu repo.
+
+
+******************
+Como crear un .rst
+******************
+
+Para crear un .rst puedes hacerlo desde cualquier editor de texto, además puedes editarlos y ver la vista previa desde github
+
+
 *************************
 Códigos básicos del .rst
 *************************
