@@ -2,15 +2,13 @@
 Los Controladores
 #################
 
-Los controladores son los encargados de recibir las peticiones de los usuarios y decidir qué hacer 
-con ellas mismas. Los controladores se ubican en la carpeta controllers de tu app y se deben llamar 
-ejemplo_controller.php.
+Los controladores son los encargados de recibir las peticiones de los usuarios y decidir qué hacer con ellas mismas. Los controladores se ubican en la carpeta controllers de tu app, el nombre del archivo debe llevar el sufijo *_controller*, esto hace que KumbiaPHP identifique ese archivo como un controlador.
 
 *************************
 Definiendo un Controlador
 *************************
 
-La clase de cada controlador se debe llamar asi:
+La clase de cada controlador se debe llamar en notación `Camel Case`_, asi:
 
 .. code-block:: php
 
@@ -163,3 +161,5 @@ cualquier acción. Podemos invocar el callback de la siguiente manera:
         }
             
     }
+    
+.. _Camel Case: http://es.wikipedia.org/wiki/Camel_Case
