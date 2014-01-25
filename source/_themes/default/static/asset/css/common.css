@@ -156,3 +156,7 @@ th{ background-color: #326B95;  color: #FFFFFF; text-align: left;  }
     padding: 1px 6px;
 }
 .highlight pre { }
+
+.admonition .last { padding: 5px 2px; background: none repeat scroll 0% 0% rgb(240, 173, 78); border: 1px solid rgb(204, 204, 204); color: #FFFFFF; border-radius: 3px; font-weight: bold }
+.admonition .last .pre { font-weight: normal !important; color: #444444 !important }
+.admonition .admonition-title { visibility: hidden;  margin: 0; padding: 0;}

@@ -5,8 +5,9 @@ Enrutamiento
 Por medio del ``routes.ini`` que se encuentra en la carpeta ``config`` de tu aplicativo, 
 puedes definir un enrutamiento estático hacia tus controladores o acciones.
 
-Nota:
-    Para utilizar el enrutamiento tienes que tenerlo activo en el archivo ``config.ini`` la línea ``routes: On``
+.. important:: Nota: Para utilizar el enrutamiento tienes que tenerlo activo en el archivo ``config.ini`` la línea ``routes: On``
+
+.. contents:: Contenido
 
 **************
 Ejemplo de uso

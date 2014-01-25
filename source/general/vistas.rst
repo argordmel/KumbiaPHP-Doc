@@ -7,13 +7,15 @@ que sea suficientemente entendible para un diseñador Web y además, para dejar 
 solo las tareas de visualizar los resultados generados por los controladores y presentar las 
 capturas de datos para usuarios.
 
+.. contents:: Contenido
+
 ******************************
 Describiendo el funcionamiento
 ******************************
 
 El manejador de vistas implementa el patrón de diseño de vista en dos pasos, el cual consiste en 
 dividir el proceso de mostrar una vista en dos partes: la primera parte es utilizar una vista 
-o ``view`` asociada a una acción del controlador para convertir los datos que vienen del 
+o *view* asociada a una acción del controlador para convertir los datos que vienen del 
 modelo en lógica de presentación sin especificar ningún formato específico y la segunda es establecer el 
 formato de presentación a través de una plantilla o template.
 
@@ -24,12 +26,12 @@ pies de página, entre otros.
 
 KumbiaPHP favoreciendo siempre los convenios asume los siguientes respecto a las vistas:
 
-- Todos los archivos de vistas deben tener la extensión ``.phtml``.
-- Cada controlador o módulo tiene un directorio de vistas asociado cuyo nombre coincide con el nombre del controlador en notación smallcase. Por ejemplo: si posees un controlador cuya clase se denomina ``PersonalTecnicoController`` esta por convenio tiene un directorio de vistas ``personal_tecnico``.
+- Todos los archivos de vistas deben tener la extensión **.phtml**.
+- Cada controlador o módulo tiene un directorio de vistas asociado cuyo nombre coincide con el nombre del controlador en notación ``small_case``. Por ejemplo: si posees un controlador cuya clase se denomina ``PersonalTecnicoController`` esta por convenio tiene un directorio de vistas ``personal_tecnico``.
 - Cada vez que se ejecuta una acción se intenta cargar una vista cuyo nombre es el mismo que el de la acción ejecutada.
 - Los templates deben ubicarse en el directorio ``views/_shared/templates``.
 - Los partials deben ubicarse en el directorio ``views/_shared/partials``.
-- Por defecto se utiliza el template ``default`` para mostrar las vistas de acción
+- Por defecto se utiliza el template ``default.phtml`` para mostrar las vistas de acción
 
 **********
 Plantillas
@@ -53,7 +55,7 @@ llamar la clase y método ``View::content()`` en el lugar donde se quiera mostra
 
 Con ese llamado, renderizamos la vista del método del controlador en el template. 
 
-Si es necesario cambiar el template para una acción o controlador, lo indicamos de la siguiente manera:
+Si es necesario cambiar el template para una acción o controlador, lo indicamos en cualquier método:
 
 .. code-block:: php
 
@@ -62,14 +64,17 @@ Si es necesario cambiar el template para una acción o controlador, lo indicamos
     class EjemploController extends AppController {
 
         protected function before_filter() {
-            View::template('otro_template');
+            View::template('template_1');
         }   
 
         public function hola() {
-        
+            //También se puede desde cualquier método
+            View::template('template_2');
         }
             
-    } 
+    }
+
+Si deseas indicar un template para todos los controladores, puedes echarle un vistazo a la súper clase :doc:`AppController <app_controller>`
 
 Si el tipo de respuesta de la vista no incluye una plantilla:
 
@@ -92,8 +97,8 @@ Pasando datos al template
 *************************
 
 Para utilizar las variables de los controladores en las vistas, estas deben ser variables 
-públicas ``$this->nombre_variable`` pues KumbiaPHP extrae esas variables y las convierte en variables 
-normales ``$nombre_variable``.
+públicas **$this->nombre_variable** pues KumbiaPHP extrae esas variables y las convierte en variables 
+normales **$nombre_variable**.
 
 Ejemplo: 
 
@@ -106,13 +111,13 @@ Ejemplo:
         public $page_title = 'Título de prueba';
 
         public function hola() {
-            
+            View::template('mi_template');
         }
             
     } 
 
 
-Vista: ``view/_shared/templates/mi_template.phtml``
+Template: ``view/_shared/templates/mi_template.phtml``
 
 .. code-block:: php
 
@@ -168,8 +173,8 @@ Pasando datos a la vista
 ************************
 
 Para utilizar las variables de los controladores en las vistas, estas deben ser variables 
-públicas ``$this->nombre_variable`` pues KumbiaPHP extrae esas variables y las convierte en variables 
-normales ``$nombre_variable``. 
+públicas **$this->nombre_variable** pues KumbiaPHP extrae esas variables y las convierte en variables 
+normales **$nombre_variable**. 
 
 Ejemplo: 
 
@@ -197,10 +202,10 @@ Vista: ``view/ejemplo/hola.phtml``
 Mostrando búffer de salida de los controladores
 ***********************************************
 
-Para mostrar el contenido del buffer de salida se hace uso de la clase y método ``View::content()``, 
+Para mostrar el contenido del buffer de salida se hace uso de la clase y método **View::content()**, 
 donde el contenido del búffer de salida lo constituye principalmente los mensajes
-``Flash`` o algunos ``echo`` o ``print`` que se hagan (se desaconseja el uso de estos últimos 
-en los controladores). Al invocar ``View::content()`` se muestra el contenido del búffer de salida en el 
+**Flash** o algunos **echo** o **print** que se hagan (se desaconseja el uso del echo o print_r 
+en los controladores, pues va en contra del MVC). Al invocar **View::content()** se muestra el contenido del búffer de salida en el 
 lugar donde fue invocado.
 
 Ejemplo: 

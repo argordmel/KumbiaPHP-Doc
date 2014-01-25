@@ -3,23 +3,24 @@ Los Modelos
 ###########
 
 Los modelos son la lógica de negocio y todo lo que tiene que ver con el acceso a la base de datos. 
-Los modelos son ubicados dentro de la carpeta ``models`` de nuestra aplicación.
+Los modelos son ubicados dentro de la carpeta **models** de nuestra aplicación.
 
+.. contents:: Contenido
 
 ***************************
 Convenciones en los modelos
 ***************************
 
-Como convención los archivos se deben llamar igual que el nombre de la tabla; ejemplo: ``cliente.php``, 
-``tipo_cliente.php``.  De igual manera en la base de datos las llaves primarias se deben llamar ``id`` y 
-deben ser ``AUTOINCREMENT`` o ``SERIAL``.
+Como convención los archivos se deben llamar igual que el nombre de la tabla; ejemplo: **cliente.php**, 
+**tipo_cliente.php**.  De igual manera en la base de datos las llaves primarias se deben llamar **id** y 
+deben ser AUTOINCREMENT o SERIAL.
 
-Los campos terminados en ``*_id`` se utilizan para relaciones foráneas a otras tablas. Ejemplo 
-``libro_id`` indica que posee una relación con la tabla ``libro``.
+Los campos terminados en ***_id** se utilizan para relaciones foráneas a otras tablas. Ejemplo 
+**libro_id** indica que posee una relación con la tabla **libro**.
 
-Si se desea almacenar la fecha de registro y modificación se pueden crear los campos ``*_at`` para el 
-registro y ``*_in`` para la modificación. Ejemplo: registrado_at, modificado_in. Adicionalmente deben 
-ser typo ``DATETIME``, el cual se carga el valor automáticamente.
+Si se desea almacenar la fecha de registro y modificación se pueden crear los campos ***_at** para el 
+registro y **_in** para la modificación. Ejemplo: cliente_at, cliente_in. Adicionalmente deben 
+ser tipo DATETIME, el cual KumbiaPHP cargará el valor automáticamente.
 
 *********************
 Como usar los Modelos
@@ -58,7 +59,7 @@ En KumbiaPHP existen 2 formas de invocar nuestros modelos según nuestros casos 
 
 - ``Load::models('nombre_modelo', 'nombre_otro_modelo');`` 
     De esta manera incluimos el (los) archivo(s) correspondiente(s) al (los) modelo(s) indicados(s).  Esta 
-    metodología es útil si necesitamos utilizar el modelo en mas de una acción dentro de uno o varios 
+    metodología es útil si necesitamos utilizar el modelo en más de una acción dentro de uno o varios 
     controladores.    
 - ``Load::model('nombre_modelo');`` 
     De esta manera devuelve un objeto creado del modelo indicado.  Esta metodología es útil cuando solo 

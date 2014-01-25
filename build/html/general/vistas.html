@@ -54,16 +54,34 @@
 
             <div class="row" id="content">
   <div class="section" id="las-vistas">
-<h1>Las Vistas<a class="headerlink" href="#las-vistas" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id1">Las Vistas</a><a class="headerlink" href="#las-vistas" title="Permalink to this headline">¶</a></h1>
 <p>Es buena práctica de desarrollo que las vistas contengan una cantidad mínima de código en PHP para
 que sea suficientemente entendible para un diseñador Web y además, para dejar a las vistas
 solo las tareas de visualizar los resultados generados por los controladores y presentar las
 capturas de datos para usuarios.</p>
+<div class="contents topic" id="contenido">
+<p class="topic-title first">Contenido</p>
+<ul class="simple">
+<li><a class="reference internal" href="#las-vistas" id="id1">Las Vistas</a><ul>
+<li><a class="reference internal" href="#describiendo-el-funcionamiento" id="id2">Describiendo el funcionamiento</a></li>
+<li><a class="reference internal" href="#plantillas" id="id3">Plantillas</a></li>
+<li><a class="reference internal" href="#pasando-datos-al-template" id="id4">Pasando datos al template</a></li>
+<li><a class="reference internal" href="#vistas" id="id5">Vistas</a></li>
+<li><a class="reference internal" href="#pasando-datos-a-la-vista" id="id6">Pasando datos a la vista</a></li>
+<li><a class="reference internal" href="#mostrando-buffer-de-salida-de-los-controladores" id="id7">Mostrando búffer de salida de los controladores</a></li>
+<li><a class="reference internal" href="#indicando-el-tipo-de-respuesta" id="id8">Indicando el tipo de respuesta</a></li>
+<li><a class="reference internal" href="#partials" id="id9">Partials</a></li>
+<li><a class="reference internal" href="#utilizando-los-partials" id="id10">Utilizando los partials</a></li>
+<li><a class="reference internal" href="#pasando-datos-a-los-partials" id="id11">Pasando datos a los partials</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="describiendo-el-funcionamiento">
-<h2>Describiendo el funcionamiento<a class="headerlink" href="#describiendo-el-funcionamiento" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">Describiendo el funcionamiento</a><a class="headerlink" href="#describiendo-el-funcionamiento" title="Permalink to this headline">¶</a></h2>
 <p>El manejador de vistas implementa el patrón de diseño de vista en dos pasos, el cual consiste en
 dividir el proceso de mostrar una vista en dos partes: la primera parte es utilizar una vista
-o <tt class="docutils literal"><span class="pre">view</span></tt> asociada a una acción del controlador para convertir los datos que vienen del
+o <em>view</em> asociada a una acción del controlador para convertir los datos que vienen del
 modelo en lógica de presentación sin especificar ningún formato específico y la segunda es establecer el
 formato de presentación a través de una plantilla o template.</p>
 <p>Así mismo tanto las vistas de acción como las plantillas pueden utilizar vistas parciales o partials.
@@ -72,16 +90,16 @@ que constituyen lógica de presentación reutilizable en la aplicación. Ejemplo
 pies de página, entre otros.</p>
 <p>KumbiaPHP favoreciendo siempre los convenios asume los siguientes respecto a las vistas:</p>
 <ul class="simple">
-<li>Todos los archivos de vistas deben tener la extensión <tt class="docutils literal"><span class="pre">.phtml</span></tt>.</li>
-<li>Cada controlador o módulo tiene un directorio de vistas asociado cuyo nombre coincide con el nombre del controlador en notación smallcase. Por ejemplo: si posees un controlador cuya clase se denomina <tt class="docutils literal"><span class="pre">PersonalTecnicoController</span></tt> esta por convenio tiene un directorio de vistas <tt class="docutils literal"><span class="pre">personal_tecnico</span></tt>.</li>
+<li>Todos los archivos de vistas deben tener la extensión <strong>.phtml</strong>.</li>
+<li>Cada controlador o módulo tiene un directorio de vistas asociado cuyo nombre coincide con el nombre del controlador en notación <tt class="docutils literal"><span class="pre">small_case</span></tt>. Por ejemplo: si posees un controlador cuya clase se denomina <tt class="docutils literal"><span class="pre">PersonalTecnicoController</span></tt> esta por convenio tiene un directorio de vistas <tt class="docutils literal"><span class="pre">personal_tecnico</span></tt>.</li>
 <li>Cada vez que se ejecuta una acción se intenta cargar una vista cuyo nombre es el mismo que el de la acción ejecutada.</li>
 <li>Los templates deben ubicarse en el directorio <tt class="docutils literal"><span class="pre">views/_shared/templates</span></tt>.</li>
 <li>Los partials deben ubicarse en el directorio <tt class="docutils literal"><span class="pre">views/_shared/partials</span></tt>.</li>
-<li>Por defecto se utiliza el template <tt class="docutils literal"><span class="pre">default</span></tt> para mostrar las vistas de acción</li>
+<li>Por defecto se utiliza el template <tt class="docutils literal"><span class="pre">default.phtml</span></tt> para mostrar las vistas de acción</li>
 </ul>
 </div>
 <div class="section" id="plantillas">
-<h2>Plantillas<a class="headerlink" href="#plantillas" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Plantillas</a><a class="headerlink" href="#plantillas" title="Permalink to this headline">¶</a></h2>
 <p>En nuestro caso, es la forma de presentación de la vista. Dentro de cada plantilla se debe
 llamar la clase y método <tt class="docutils literal"><span class="pre">View::content()</span></tt> en el lugar donde se quiera mostrar la vista así:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">&lt;!DOCTYPE html&gt;</span>
@@ -97,22 +115,24 @@ llamar la clase y método <tt class="docutils literal"><span class="pre">View::c
 </pre></div>
 </div>
 <p>Con ese llamado, renderizamos la vista del método del controlador en el template.</p>
-<p>Si es necesario cambiar el template para una acción o controlador, lo indicamos de la siguiente manera:</p>
+<p>Si es necesario cambiar el template para una acción o controlador, lo indicamos en cualquier método:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">EjemploController</span> <span class="k">extends</span> <span class="nx">AppController</span> <span class="p">{</span>
 
     <span class="k">protected</span> <span class="k">function</span> <span class="nf">before_filter</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">View</span><span class="o">::</span><span class="na">template</span><span class="p">(</span><span class="s1">&#39;otro_template&#39;</span><span class="p">);</span>
+        <span class="nx">View</span><span class="o">::</span><span class="na">template</span><span class="p">(</span><span class="s1">&#39;template_1&#39;</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">hola</span><span class="p">()</span> <span class="p">{</span>
-
+        <span class="c1">//También se puede desde cualquier método</span>
+        <span class="nx">View</span><span class="o">::</span><span class="na">template</span><span class="p">(</span><span class="s1">&#39;template_2&#39;</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>Si deseas indicar un template para todos los controladores, puedes echarle un vistazo a la súper clase <a class="reference internal" href="app_controller.html"><em>AppController</em></a></p>
 <p>Si el tipo de respuesta de la vista no incluye una plantilla:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -129,10 +149,10 @@ llamar la clase y método <tt class="docutils literal"><span class="pre">View::c
 </div>
 </div>
 <div class="section" id="pasando-datos-al-template">
-<h2>Pasando datos al template<a class="headerlink" href="#pasando-datos-al-template" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Pasando datos al template</a><a class="headerlink" href="#pasando-datos-al-template" title="Permalink to this headline">¶</a></h2>
 <p>Para utilizar las variables de los controladores en las vistas, estas deben ser variables
-públicas <tt class="docutils literal"><span class="pre">$this-&gt;nombre_variable</span></tt> pues KumbiaPHP extrae esas variables y las convierte en variables
-normales <tt class="docutils literal"><span class="pre">$nombre_variable</span></tt>.</p>
+públicas <strong>$this-&gt;nombre_variable</strong> pues KumbiaPHP extrae esas variables y las convierte en variables
+normales <strong>$nombre_variable</strong>.</p>
 <p>Ejemplo:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -141,13 +161,13 @@ normales <tt class="docutils literal"><span class="pre">$nombre_variable</span><
     <span class="k">public</span> <span class="nv">$page_title</span> <span class="o">=</span> <span class="s1">&#39;Título de prueba&#39;</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">hola</span><span class="p">()</span> <span class="p">{</span>
-
+        <span class="nx">View</span><span class="o">::</span><span class="na">template</span><span class="p">(</span><span class="s1">&#39;mi_template&#39;</span><span class="p">);</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Vista: <tt class="docutils literal"><span class="pre">view/_shared/templates/mi_template.phtml</span></tt></p>
+<p>Template: <tt class="docutils literal"><span class="pre">view/_shared/templates/mi_template.phtml</span></tt></p>
 <div class="highlight-php"><div class="highlight"><pre><span class="x">&lt;!DOCTYPE html&gt;</span>
 <span class="x">&lt;html lang=&quot;es&quot;&gt;</span>
 <span class="x">    &lt;head&gt;</span>
@@ -162,7 +182,7 @@ normales <tt class="docutils literal"><span class="pre">$nombre_variable</span><
 </div>
 </div>
 <div class="section" id="vistas">
-<h2>Vistas<a class="headerlink" href="#vistas" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Vistas</a><a class="headerlink" href="#vistas" title="Permalink to this headline">¶</a></h2>
 <p>Como anteriormente se comentó, cada vez que se ejecuta una acción se intenta cargar una vista
 cuyo nombre es el mismo que el de la acción ejecutada.</p>
 <p>En caso de querer cambiar el nombre de la vista que no esté asociada al nombre de la acción:</p>
@@ -191,10 +211,10 @@ cuyo nombre es el mismo que el de la acción ejecutada.</p>
 </div>
 </div>
 <div class="section" id="pasando-datos-a-la-vista">
-<h2>Pasando datos a la vista<a class="headerlink" href="#pasando-datos-a-la-vista" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Pasando datos a la vista</a><a class="headerlink" href="#pasando-datos-a-la-vista" title="Permalink to this headline">¶</a></h2>
 <p>Para utilizar las variables de los controladores en las vistas, estas deben ser variables
-públicas <tt class="docutils literal"><span class="pre">$this-&gt;nombre_variable</span></tt> pues KumbiaPHP extrae esas variables y las convierte en variables
-normales <tt class="docutils literal"><span class="pre">$nombre_variable</span></tt>.</p>
+públicas <strong>$this-&gt;nombre_variable</strong> pues KumbiaPHP extrae esas variables y las convierte en variables
+normales <strong>$nombre_variable</strong>.</p>
 <p>Ejemplo:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -213,11 +233,11 @@ normales <tt class="docutils literal"><span class="pre">$nombre_variable</span><
 </div>
 </div>
 <div class="section" id="mostrando-buffer-de-salida-de-los-controladores">
-<h2>Mostrando búffer de salida de los controladores<a class="headerlink" href="#mostrando-buffer-de-salida-de-los-controladores" title="Permalink to this headline">¶</a></h2>
-<p>Para mostrar el contenido del buffer de salida se hace uso de la clase y método <tt class="docutils literal"><span class="pre">View::content()</span></tt>,
+<h2><a class="toc-backref" href="#id7">Mostrando búffer de salida de los controladores</a><a class="headerlink" href="#mostrando-buffer-de-salida-de-los-controladores" title="Permalink to this headline">¶</a></h2>
+<p>Para mostrar el contenido del buffer de salida se hace uso de la clase y método <strong>View::content()</strong>,
 donde el contenido del búffer de salida lo constituye principalmente los mensajes
-<tt class="docutils literal"><span class="pre">Flash</span></tt> o algunos <tt class="docutils literal"><span class="pre">echo</span></tt> o <tt class="docutils literal"><span class="pre">print</span></tt> que se hagan (se desaconseja el uso de estos últimos
-en los controladores). Al invocar <tt class="docutils literal"><span class="pre">View::content()</span></tt> se muestra el contenido del búffer de salida en el
+<strong>Flash</strong> o algunos <strong>echo</strong> o <strong>print</strong> que se hagan (se desaconseja el uso del echo o print_r
+en los controladores, pues va en contra del MVC). Al invocar <strong>View::content()</strong> se muestra el contenido del búffer de salida en el
 lugar donde fue invocado.</p>
 <p>Ejemplo:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -238,7 +258,7 @@ lugar donde fue invocado.</p>
 </div>
 </div>
 <div class="section" id="indicando-el-tipo-de-respuesta">
-<h2>Indicando el tipo de respuesta<a class="headerlink" href="#indicando-el-tipo-de-respuesta" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">Indicando el tipo de respuesta</a><a class="headerlink" href="#indicando-el-tipo-de-respuesta" title="Permalink to this headline">¶</a></h2>
 <p>Si el tipo de respuesta es un json, pdf, xls, etc podemos indicarlo de la siguiente manera sin incluir
 el template:</p>
 <p>Ejemplo:</p>
@@ -258,7 +278,7 @@ el template:</p>
 <p>Tomará la siguiente vista: <tt class="docutils literal"><span class="pre">view/reporte/clientes/listar.pdf.phtml</span></tt></p>
 </div>
 <div class="section" id="partials">
-<h2>Partials<a class="headerlink" href="#partials" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">Partials</a><a class="headerlink" href="#partials" title="Permalink to this headline">¶</a></h2>
 <p>Los partials o vistas parciales son fragmentos de vistas que son compartidas por distintas vistas, de
 manera que constituyen lógica de presentación reutilizable en la aplicación. Por lo general los partials
 son elementos como: menús, cabecera, pie de página, formularios, entre otros.</p>
@@ -270,7 +290,7 @@ son elementos como: menús, cabecera, pie de página, formularios, entre otros.<
 <p>Partial: <tt class="docutils literal"><span class="pre">views/_shared/partials/ejemplo.phtml</span></tt></p>
 </div>
 <div class="section" id="utilizando-los-partials">
-<h2>Utilizando los partials<a class="headerlink" href="#utilizando-los-partials" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">Utilizando los partials</a><a class="headerlink" href="#utilizando-los-partials" title="Permalink to this headline">¶</a></h2>
 <p>Para utilizar un partial se debe invocar el método <tt class="docutils literal"><span class="pre">View::partial()</span></tt> indicando como argumento el partial
 deseado y la vista parcial se mostrará en el lugar donde se invocó.</p>
 <p>Ejemplo:</p>
@@ -292,7 +312,7 @@ deseado y la vista parcial se mostrará en el lugar donde se invocó.</p>
 <p>Cabe destacar que los partial se pueden utilizar tanto en vistas de acción, templates e incluso dentro de otros partials.</p>
 </div>
 <div class="section" id="pasando-datos-a-los-partials">
-<h2>Pasando datos a los partials<a class="headerlink" href="#pasando-datos-a-los-partials" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Pasando datos a los partials</a><a class="headerlink" href="#pasando-datos-a-los-partials" title="Permalink to this headline">¶</a></h2>
 <p>Para pasar datos a un partial, estos se deben indicar en un array asociativo donde cada clave con su
 correspondiente valor se cargarán como variables en el ámbito local del partial.</p>
 <p>Ejemplo:</p>

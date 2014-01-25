@@ -54,22 +54,34 @@
 
             <div class="row" id="content">
   <div class="section" id="los-modelos">
-<h1>Los Modelos<a class="headerlink" href="#los-modelos" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id1">Los Modelos</a><a class="headerlink" href="#los-modelos" title="Permalink to this headline">¶</a></h1>
 <p>Los modelos son la lógica de negocio y todo lo que tiene que ver con el acceso a la base de datos.
-Los modelos son ubicados dentro de la carpeta <tt class="docutils literal"><span class="pre">models</span></tt> de nuestra aplicación.</p>
+Los modelos son ubicados dentro de la carpeta <strong>models</strong> de nuestra aplicación.</p>
+<div class="contents topic" id="contenido">
+<p class="topic-title first">Contenido</p>
+<ul class="simple">
+<li><a class="reference internal" href="#los-modelos" id="id1">Los Modelos</a><ul>
+<li><a class="reference internal" href="#convenciones-en-los-modelos" id="id2">Convenciones en los modelos</a></li>
+<li><a class="reference internal" href="#como-usar-los-modelos" id="id3">Como usar los Modelos</a></li>
+<li><a class="reference internal" href="#definiendo-un-modelo" id="id4">Definiendo un Modelo</a></li>
+<li><a class="reference internal" href="#invocando-un-modelo-en-nuestros-controladores" id="id5">Invocando un modelo en nuestros controladores</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="convenciones-en-los-modelos">
-<h2>Convenciones en los modelos<a class="headerlink" href="#convenciones-en-los-modelos" title="Permalink to this headline">¶</a></h2>
-<p>Como convención los archivos se deben llamar igual que el nombre de la tabla; ejemplo: <tt class="docutils literal"><span class="pre">cliente.php</span></tt>,
-<tt class="docutils literal"><span class="pre">tipo_cliente.php</span></tt>.  De igual manera en la base de datos las llaves primarias se deben llamar <tt class="docutils literal"><span class="pre">id</span></tt> y
-deben ser <tt class="docutils literal"><span class="pre">AUTOINCREMENT</span></tt> o <tt class="docutils literal"><span class="pre">SERIAL</span></tt>.</p>
-<p>Los campos terminados en <tt class="docutils literal"><span class="pre">*_id</span></tt> se utilizan para relaciones foráneas a otras tablas. Ejemplo
-<tt class="docutils literal"><span class="pre">libro_id</span></tt> indica que posee una relación con la tabla <tt class="docutils literal"><span class="pre">libro</span></tt>.</p>
-<p>Si se desea almacenar la fecha de registro y modificación se pueden crear los campos <tt class="docutils literal"><span class="pre">*_at</span></tt> para el
-registro y <tt class="docutils literal"><span class="pre">*_in</span></tt> para la modificación. Ejemplo: registrado_at, modificado_in. Adicionalmente deben
-ser typo <tt class="docutils literal"><span class="pre">DATETIME</span></tt>, el cual se carga el valor automáticamente.</p>
+<h2><a class="toc-backref" href="#id2">Convenciones en los modelos</a><a class="headerlink" href="#convenciones-en-los-modelos" title="Permalink to this headline">¶</a></h2>
+<p>Como convención los archivos se deben llamar igual que el nombre de la tabla; ejemplo: <strong>cliente.php</strong>,
+<strong>tipo_cliente.php</strong>.  De igual manera en la base de datos las llaves primarias se deben llamar <strong>id</strong> y
+deben ser AUTOINCREMENT o SERIAL.</p>
+<p>Los campos terminados en <strong>*_id</strong> se utilizan para relaciones foráneas a otras tablas. Ejemplo
+<strong>libro_id</strong> indica que posee una relación con la tabla <strong>libro</strong>.</p>
+<p>Si se desea almacenar la fecha de registro y modificación se pueden crear los campos <strong>*_at</strong> para el
+registro y <strong>_in</strong> para la modificación. Ejemplo: cliente_at, cliente_in. Adicionalmente deben
+ser tipo DATETIME, el cual KumbiaPHP cargará el valor automáticamente.</p>
 </div>
 <div class="section" id="como-usar-los-modelos">
-<h2>Como usar los Modelos<a class="headerlink" href="#como-usar-los-modelos" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Como usar los Modelos</a><a class="headerlink" href="#como-usar-los-modelos" title="Permalink to this headline">¶</a></h2>
 <p>Los Modelos representan la lógica de la aplicación y son parte fundamental para el momento que se desarrolla
 una aplicación, un buen uso de estos nos proporciona un gran poder al momento que se necesita escalar,
 mantener y reusar código en una aplicación. Por lo general un mal uso de los modelos es solo dejar el
@@ -82,7 +94,7 @@ las peticiones del usuarios y solicitar dicha información a los modelos, con es
 del MVC.</p>
 </div>
 <div class="section" id="definiendo-un-modelo">
-<h2>Definiendo un Modelo<a class="headerlink" href="#definiendo-un-modelo" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Definiendo un Modelo</a><a class="headerlink" href="#definiendo-un-modelo" title="Permalink to this headline">¶</a></h2>
 <p>La clase de cada modelo se debe llamar de la siguiente manera:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -93,13 +105,13 @@ del MVC.</p>
 </div>
 </div>
 <div class="section" id="invocando-un-modelo-en-nuestros-controladores">
-<h2>Invocando un modelo en nuestros controladores<a class="headerlink" href="#invocando-un-modelo-en-nuestros-controladores" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Invocando un modelo en nuestros controladores</a><a class="headerlink" href="#invocando-un-modelo-en-nuestros-controladores" title="Permalink to this headline">¶</a></h2>
 <p>En KumbiaPHP existen 2 formas de invocar nuestros modelos según nuestros casos requeridos</p>
 <ul>
 <li><dl class="first docutils">
 <dt><tt class="docutils literal"><span class="pre">Load::models('nombre_modelo',</span> <span class="pre">'nombre_otro_modelo');</span></tt></dt>
 <dd><p class="first last">De esta manera incluimos el (los) archivo(s) correspondiente(s) al (los) modelo(s) indicados(s).  Esta
-metodología es útil si necesitamos utilizar el modelo en mas de una acción dentro de uno o varios
+metodología es útil si necesitamos utilizar el modelo en más de una acción dentro de uno o varios
 controladores.</p>
 </dd>
 </dl>

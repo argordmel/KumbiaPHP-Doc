@@ -7,6 +7,7 @@ KumbiaPHP se encuentra bajo licencia new BSD, por lo tanto, puedes usar KumbiaPH
 siempre y cuando tengas en cuenta la licencia. Te aconsejamos que siempre uses versiones estables y la más 
 reciente posible, ya que se incluyen correcciones, nuevas funcionalidades y otras mejoras interesantes.
 
+.. contents:: Contenido
 
 ******************
 Sobre la comunidad

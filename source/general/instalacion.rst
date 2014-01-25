@@ -4,6 +4,7 @@ Instalación
 
 En esta sección, se explican los pasos a seguir, para poner a funcionar el framework en nuestro ambiente de desarrollo.
 
+.. contents:: Contenido
 
 **************
 Requerimientos

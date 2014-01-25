@@ -54,12 +54,24 @@
 
             <div class="row" id="content">
   <div class="section" id="redireccionamiento">
-<h1>Redireccionamiento<a class="headerlink" href="#redireccionamiento" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id1">Redireccionamiento</a><a class="headerlink" href="#redireccionamiento" title="Permalink to this headline">¶</a></h1>
 <p>En un método de nuestro controlador podemos enrutar hacia otro controlador y/o acción según sea nuestro
 caso; por ejemplo, si estamos verificando o validando una información y falla, podemos direccionar a
 una acción o un controlador.</p>
+<div class="contents topic" id="contenido">
+<p class="topic-title first">Contenido</p>
+<ul class="simple">
+<li><a class="reference internal" href="#redireccionamiento" id="id1">Redireccionamiento</a><ul>
+<li><a class="reference internal" href="#redireccion-entre-controladores" id="id2">Redirección entre controladores</a></li>
+<li><a class="reference internal" href="#redireccion-entre-acciones-dentro-de-un-controlador" id="id3">Redirección entre acciones dentro de un controlador</a></li>
+<li><a class="reference internal" href="#redireccion-interna" id="id4">Redirección interna</a></li>
+<li><a class="reference internal" href="#obteniendo-informacion-de-la-ruta-actual" id="id5">Obteniendo información de la ruta actual</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="redireccion-entre-controladores">
-<h2>Redirección entre controladores<a class="headerlink" href="#redireccion-entre-controladores" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">Redirección entre controladores</a><a class="headerlink" href="#redireccion-entre-controladores" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nx">Redirect</span><span class="o">::</span><span class="na">to</span><span class="p">(</span><span class="s1">&#39;controlador/&#39;</span><span class="p">);</span>
@@ -77,7 +89,7 @@ una acción o un controlador.</p>
 </div>
 </div>
 <div class="section" id="redireccion-entre-acciones-dentro-de-un-controlador">
-<h2>Redirección entre acciones dentro de un controlador<a class="headerlink" href="#redireccion-entre-acciones-dentro-de-un-controlador" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Redirección entre acciones dentro de un controlador</a><a class="headerlink" href="#redireccion-entre-acciones-dentro-de-un-controlador" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nx">Redirect</span><span class="o">::</span><span class="na">toAction</span><span class="p">(</span><span class="s1">&#39;action/&#39;</span><span class="p">);</span>
@@ -86,7 +98,7 @@ una acción o un controlador.</p>
 </div>
 </div>
 <div class="section" id="redireccion-interna">
-<h2>Redirección interna<a class="headerlink" href="#redireccion-interna" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Redirección interna</a><a class="headerlink" href="#redireccion-interna" title="Permalink to this headline">¶</a></h2>
 <p>Al utilizar este método KumbiaPHP lo que hace es ejecutar los parámetros indicados sin redireccionar la página.
 Este tipo de redirección es muy útil cuanto utilizas tus app con ajax.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -96,7 +108,7 @@ Este tipo de redirección es muy útil cuanto utilizas tus app con ajax.</p>
 </div>
 </div>
 <div class="section" id="obteniendo-informacion-de-la-ruta-actual">
-<h2>Obteniendo información de la ruta actual<a class="headerlink" href="#obteniendo-informacion-de-la-ruta-actual" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Obteniendo información de la ruta actual</a><a class="headerlink" href="#obteniendo-informacion-de-la-ruta-actual" title="Permalink to this headline">¶</a></h2>
 <p>Cuando haces un redireccionamiento, KumbiaPHP almacena las variables de la ruta actual para poder disponer de ellas en cualquier momento.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 

@@ -9,6 +9,8 @@ es un estilo de programación en la que el objetivo primordial es la separación
 de la lógica de diseño, un ejemplo básico de esto es separar la capa de datos de la capa de presentación al 
 usuario.
 
+.. contents:: Contenido
+
 *********************
 Qué es un Controlador
 *********************

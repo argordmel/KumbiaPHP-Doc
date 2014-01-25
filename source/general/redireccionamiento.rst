@@ -6,6 +6,8 @@ En un método de nuestro controlador podemos enrutar hacia otro controlador y/o 
 caso; por ejemplo, si estamos verificando o validando una información y falla, podemos direccionar a 
 una acción o un controlador.
 
+.. contents:: Contenido
+
 *******************************
 Redirección entre controladores
 *******************************

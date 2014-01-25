@@ -54,13 +54,26 @@
 
             <div class="row" id="content">
   <div class="section" id="los-controladores">
-<h1>Los Controladores<a class="headerlink" href="#los-controladores" title="Permalink to this headline">¶</a></h1>
-<p>Los controladores son los encargados de recibir las peticiones de los usuarios y decidir qué hacer
-con ellas mismas. Los controladores se ubican en la carpeta controllers de tu app y se deben llamar
-ejemplo_controller.php.</p>
+<h1><a class="toc-backref" href="#id1">Los Controladores</a><a class="headerlink" href="#los-controladores" title="Permalink to this headline">¶</a></h1>
+<p>Los controladores son los encargados de recibir las peticiones de los usuarios
+y decidir qué hacer con ellas mismas. Los controladores se ubican en la carpeta
+controllers de tu app, el nombre del archivo debe llevar el sufijo <em>_controller</em>,
+esto hace que KumbiaPHP identifique ese archivo como un controlador.</p>
+<div class="contents topic" id="contenido">
+<p class="topic-title first">Contenido</p>
+<ul class="simple">
+<li><a class="reference internal" href="#los-controladores" id="id1">Los Controladores</a><ul>
+<li><a class="reference internal" href="#definiendo-un-controlador" id="id2">Definiendo un Controlador</a></li>
+<li><a class="reference internal" href="#acciones" id="id3">Acciones</a></li>
+<li><a class="reference internal" href="#acciones-por-defecto" id="id4">Acciones por defecto</a></li>
+<li><a class="reference internal" href="#filtros-y-callback" id="id5">Filtros y Callback</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="definiendo-un-controlador">
-<h2>Definiendo un Controlador<a class="headerlink" href="#definiendo-un-controlador" title="Permalink to this headline">¶</a></h2>
-<p>La clase de cada controlador se debe llamar asi:</p>
+<h2><a class="toc-backref" href="#id2">Definiendo un Controlador</a><a class="headerlink" href="#definiendo-un-controlador" title="Permalink to this headline">¶</a></h2>
+<p>La clase de cada controlador se debe llamar en notación <a class="reference external" href="http://es.wikipedia.org/wiki/Camel_Case">CamelCase</a>, así:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">EjemploController</span> <span class="k">extends</span> <span class="nx">AppController</span> <span class="p">{</span>
@@ -70,7 +83,7 @@ ejemplo_controller.php.</p>
 </div>
 </div>
 <div class="section" id="acciones">
-<h2>Acciones<a class="headerlink" href="#acciones" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Acciones</a><a class="headerlink" href="#acciones" title="Permalink to this headline">¶</a></h2>
 <p>Los controladores están compuestos por métodos o acciones que son invocados de las peticiones
 realizadas por el usuario. Cada método puede tener una vista correspondiente y puede interactuar
 con uno o varios modelos.</p>
@@ -110,7 +123,7 @@ propiedades definidas en el controlador.</p>
 </div>
 <p>En el ejemplo anterior se definió en la acción <tt class="docutils literal"><span class="pre">ver($slug)</span></tt> con un solo parámetro, esto quiere decir
 que si no se envía ese parámetro o se intentan enviar más parámetros adicionales KumbiaPHP lanzará una
-exception (en producción mostrará un error 404). Este comportamiento es por defecto en el framework y
+excepción (en producción mostrará un error 404). Este comportamiento es por defecto en el framework y
 se puede cambiar para determinados escenarios según el propósito de nuestra aplicación para la ejecución
 de una acción.</p>
 <p>Para quitar esta validación, indicamos que descarte el número de parámetros que pasan por la URL:</p>
@@ -128,9 +141,21 @@ de una acción.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>También podemos indicar que el parámetro es vacío o nulo</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">NoticiaController</span> <span class="k">extends</span> <span class="nx">AppController</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">ver</span><span class="p">(</span><span class="nv">$slug</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="acciones-por-defecto">
-<h2>Acciones por defecto<a class="headerlink" href="#acciones-por-defecto" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Acciones por defecto</a><a class="headerlink" href="#acciones-por-defecto" title="Permalink to this headline">¶</a></h2>
 <p>Tomemos por ejemplo esta URL:</p>
 <p><tt class="docutils literal"><span class="pre">http://www.example.com/noticia/</span></tt></p>
 <p>Como podemos observar, hemos definido solamente el controlador <tt class="docutils literal"><span class="pre">noticia</span></tt>.  KumbiaPHP analiza el controlador
@@ -152,7 +177,7 @@ y tomará por defecto la acción <tt class="docutils literal"><span class="pre">
 </div>
 </div>
 <div class="section" id="filtros-y-callback">
-<h2>Filtros y Callback<a class="headerlink" href="#filtros-y-callback" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Filtros y Callback</a><a class="headerlink" href="#filtros-y-callback" title="Permalink to this headline">¶</a></h2>
 <p>Cada controlador tiene una serie de filtros y callback que se ejecuta antes/después de cualquier método o
 acción. Es ideal para el manejo de sesiones, manejo del ACL, cambios de vistas entre otras.</p>
 <p>La super clase <tt class="docutils literal"><span class="pre">AppController</span></tt> posee 2 métodos que se ejecutan al inicializar y finalizar cualquier

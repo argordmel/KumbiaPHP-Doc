@@ -2,13 +2,18 @@
 Los Controladores
 #################
 
-Los controladores son los encargados de recibir las peticiones de los usuarios y decidir qué hacer con ellas mismas. Los controladores se ubican en la carpeta controllers de tu app, el nombre del archivo debe llevar el sufijo *_controller*, esto hace que KumbiaPHP identifique ese archivo como un controlador.
+Los controladores son los encargados de recibir las peticiones de los usuarios 
+y decidir qué hacer con ellas mismas. Los controladores se ubican en la carpeta 
+controllers de tu app, el nombre del archivo debe llevar el sufijo *_controller*, 
+esto hace que KumbiaPHP identifique ese archivo como un controlador.
+
+.. contents:: Contenido
 
 *************************
 Definiendo un Controlador
 *************************
 
-La clase de cada controlador se debe llamar en notación `Camel Case`_, asi:
+La clase de cada controlador se debe llamar en notación `CamelCase`_, así:
 
 .. code-block:: php
 
@@ -70,7 +75,7 @@ Para este ejemplo podemos armar nuestro controlador de la siguiente manera:
 
 En el ejemplo anterior se definió en la acción ``ver($slug)`` con un solo parámetro, esto quiere decir 
 que si no se envía ese parámetro o se intentan enviar más parámetros adicionales KumbiaPHP lanzará una 
-exception (en producción mostrará un error 404). Este comportamiento es por defecto en el framework y 
+excepción (en producción mostrará un error 404). Este comportamiento es por defecto en el framework y 
 se puede cambiar para determinados escenarios según el propósito de nuestra aplicación para la ejecución 
 de una acción.
 
@@ -90,6 +95,21 @@ Para quitar esta validación, indicamos que descarte el número de parámetros q
         //Métodos
             
     }
+
+También podemos indicar que el parámetro es vacío o nulo
+
+.. code-block:: php
+
+    <?php
+    
+    class NoticiaController extends AppController {
+
+        public function ver($slug='') {
+            
+        }
+            
+    }
+
 
 ********************
 Acciones por defecto
@@ -162,4 +182,4 @@ cualquier acción. Podemos invocar el callback de la siguiente manera:
             
     }
     
-.. _Camel Case: http://es.wikipedia.org/wiki/Camel_Case
+.. _CamelCase: http://es.wikipedia.org/wiki/Camel_Case

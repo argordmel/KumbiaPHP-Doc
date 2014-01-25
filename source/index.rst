@@ -31,5 +31,6 @@ Temas generales
 - :doc:`general/redireccionamiento`
 - :doc:`general/enrutamiento`
 - :doc:`general/programacion_modular`
+- :doc:`general/app_controller`
 
 
