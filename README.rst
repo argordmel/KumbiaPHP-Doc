@@ -3,7 +3,13 @@ Bienvenido a la guía de inicio rápido de KumbiaPHP
 ##################################################
 
 *********************************
-Instrucciones para la instalación
+Manual para la versión 1.0 Spirit
+*********************************
+
+`Guía de inicio </source/index.rst>`_.
+
+*********************************
+Convertir a html
 *********************************
 
 La guía del usuario de Kumbiaphp usa Sphinx para gestionar la documentación y
